@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <!--
+    PRD Section 7: Sales Process for Books
+    Flow: Create Sales Order → Confirm → Invoice → Deliver → Stock updated
+    This uses the standard sale_management module; we add a filtered action
+    accessible from the Library menu.
+  -->
+
+  <!-- Action: All book sales orders -->
+  <record id="action_library_sale_orders" model="ir.actions.act_window">
+    <field name="name">Book Sales</field>
+    <field name="res_model">sale.order</field>
+    <field name="view_mode">list,form</field>
+    <field name="context">{}</field>
+    <field name="help" type="html">
+      <p class="o_view_nocontent_smiling_face">
+        Create a Sales Order to sell books to customers.
+      </p>
+      <p>
+        After confirming the order, generate an invoice and deliver
+        the book. Stock is updated automatically upon delivery.
+      </p>
+    </field>
+  </record>
+
+  <!-- Action: Invoices related to book sales -->
+  <record id="action_library_invoices" model="ir.actions.act_window">
+    <field name="name">Book Invoices</field>
+    <field name="res_model">account.move</field>
+    <field name="view_mode">list,form</field>
+    <field name="domain">[('move_type','in',('out_invoice','out_refund'))]</field>
+    <field name="context">{'default_move_type': 'out_invoice'}</field>
+  </record>
+
+</odoo>

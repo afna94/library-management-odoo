@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <!-- Library Shelf internal location under the main stock location -->
+  <record id="stock_location_library_shelf" model="stock.location">
+    <field name="name">Library Shelf</field>
+    <field name="usage">internal</field>
+    <field name="location_id" ref="stock.stock_location_locations"/>
+    <field name="active">True</field>
+  </record>
+</odoo>

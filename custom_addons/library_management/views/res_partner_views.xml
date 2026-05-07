@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="view_partner_library_form" model="ir.ui.view">
+    <field name="name">res.partner.library.form</field>
+    <field name="model">res.partner</field>
+    <field name="inherit_id" ref="base.view_partner_form"/>
+    <field name="arch" type="xml">
+
+      <!-- Smart buttons -->
+      <div name="button_box" position="inside">
+        <button class="oe_stat_button"
+                type="object"
+                name="action_view_borrows"
+                icon="fa-book">
+          <field name="borrow_count" widget="statinfo" string="Borrows"/>
+        </button>
+        <button class="oe_stat_button"
+                type="object"
+                name="action_view_borrows"
+                icon="fa-exclamation-triangle"
+                invisible="overdue_count == 0">
+          <field name="overdue_count" widget="statinfo" string="Overdue"/>
+        </button>
+      </div>
+
+      <!-- Borrowing History tab -->
+      <page name="sales_purchases" position="after">
+        <page name="library" string="Borrowing History">
+          <group>
+            <group>
+              <field name="active_borrow_count" string="Currently Borrowed"/>
+              <field name="overdue_count"/>
+            </group>
+          </group>
+          <field name="book_issue_ids">
+            <list>
+              <field name="name"/>
+              <field name="book_id"/>
+              <field name="issue_date"/>
+              <field name="due_date"/>
+              <field name="return_date"/>
+              <field name="state" widget="badge"
+                     decoration-success="state == 'returned'"
+                     decoration-danger="state == 'overdue'"
+                     decoration-info="state == 'issued'"
+                     decoration-secondary="state == 'draft'"/>
+            </list>
+          </field>
+        </page>
+      </page>
+
+    </field>
+  </record>
+</odoo>

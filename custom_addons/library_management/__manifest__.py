@@ -1,0 +1,32 @@
+# -*- coding: utf-8 -*-
+{
+    'name': 'Library Management',
+    'version': '18.0.1.0.0',
+    'category': 'Library',
+    'summary': 'Manage book borrowing, returning and overdue alerts',
+    'author': 'Your Name',
+    'website': 'https://yourwebsite.com',
+    'license': 'LGPL-3',
+    'depends': [
+        'base',
+        'stock',
+        'mail',
+        'product',
+        'purchase',
+        'sale_management',
+    ],
+    'data': [
+        'security/ir.model.access.csv',
+        'data/sequence_and_cron.xml',
+        'data/stock_location.xml',
+        'data/mail_template.xml',
+        'views/book_issue_views.xml',
+        'views/res_partner_views.xml',
+        'views/purchase_views.xml',
+        'views/sale_views.xml',
+        'views/menu.xml',
+    ],
+    'installable': True,
+    'application': True,
+    'auto_install': False,
+}
