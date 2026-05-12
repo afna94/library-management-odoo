@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <!-- Sequence: generates references like LIB/2024/0001 -->
+  <record id="seq_library_book_issue" model="ir.sequence">
+    <field name="name">Library Book Issue</field>
+    <field name="code">library.book.issue</field>
+    <field name="prefix">LIB/%(year)s/</field>
+    <field name="padding">4</field>
+    <field name="company_id" eval="False"/>
+  </record>
+
+  <!-- Daily cron: checks and marks overdue books, sends email reminders -->
+  <record id="ir_cron_library_overdue_check" model="ir.cron">
+    <field name="name">Library: Check Overdue Books Daily</field>
+    <field name="model_id" ref="library_management.model_library_book_issue"/>
+    <field name="state">code</field>
+    <field name="code">model.action_check_overdue()</field>
+    <field name="interval_number">1</field>
+    <field name="interval_type">days</field>
+    <field name="active">True</field>
+  </record>
+
+</odoo>

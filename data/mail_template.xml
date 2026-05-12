@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="email_template_overdue_book" model="mail.template">
+    <field name="name">Library: Overdue Book Reminder</field>
+    <field name="model_id" ref="library_management.model_library_book_issue"/>
+    <field name="subject">Overdue Book Reminder — {{ object.book_id.name }}</field>
+    <field name="email_to">{{ object.member_id.email }}</field>
+    <field name="body_html"><![CDATA[
+<div style="font-family:Arial,sans-serif;max-width:600px;margin:auto">
+  <h2 style="color:#875A7B">Library Book Overdue Notice</h2>
+  <p>Dear <strong>{{ object.member_id.name }}</strong>,</p>
+  <p>This is a reminder that the following book is overdue:</p>
+  <table style="width:100%;border-collapse:collapse;margin:16px 0">
+    <tr style="background:#f5f5f5">
+      <td style="padding:8px;border:1px solid #ddd">Book</td>
+      <td style="padding:8px;border:1px solid #ddd"><strong>{{ object.book_id.name }}</strong></td>
+    </tr>
+    <tr>
+      <td style="padding:8px;border:1px solid #ddd">Issue Date</td>
+      <td style="padding:8px;border:1px solid #ddd">{{ object.issue_date }}</td>
+    </tr>
+    <tr style="background:#fff3cd">
+      <td style="padding:8px;border:1px solid #ddd">Due Date</td>
+      <td style="padding:8px;border:1px solid #ddd;color:#d9534f"><strong>{{ object.due_date }}</strong></td>
+    </tr>
+    <tr style="background:#f8d7da">
+      <td style="padding:8px;border:1px solid #ddd">Days Overdue</td>
+      <td style="padding:8px;border:1px solid #ddd;color:#d9534f"><strong>{{ object.days_overdue }} days</strong></td>
+    </tr>
+  </table>
+  <p>Please return the book to the library at your earliest convenience.</p>
+  <p style="color:#888;font-size:12px">This is an automated message from the Library Management System.</p>
+</div>
+    ]]></field>
+    <field name="auto_delete">True</field>
+  </record>
+</odoo>

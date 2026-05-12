@@ -1,0 +1,16 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_issue_customer,issue customer,model_library_book_issue,library_management.group_library_customer,1,1,1,0
+access_issue_reception,issue reception,model_library_book_issue,library_management.group_library_reception,1,1,1,0
+access_issue_manager,issue manager,model_library_book_issue,library_management.group_library_manager,1,1,1,1
+access_issue_admin,issue admin,model_library_book_issue,library_management.group_library_admin,1,1,1,1
+access_partner_reception,partner reception,base.model_res_partner,library_management.group_library_reception,1,1,1,0
+access_partner_manager,partner manager,base.model_res_partner,library_management.group_library_manager,1,1,1,1
+access_partner_admin,partner admin,base.model_res_partner,library_management.group_library_admin,1,1,1,1
+access_product_tmpl_customer,product tmpl customer,product.model_product_template,library_management.group_library_customer,1,0,0,0
+access_product_tmpl_reception,product tmpl reception,product.model_product_template,library_management.group_library_reception,1,1,1,0
+access_product_tmpl_manager,product tmpl manager,product.model_product_template,library_management.group_library_manager,1,1,1,1
+access_product_tmpl_admin,product tmpl admin,product.model_product_template,library_management.group_library_admin,1,1,1,1
+access_product_customer,product customer,product.model_product_product,library_management.group_library_customer,1,0,0,0
+access_product_reception,product reception,product.model_product_product,library_management.group_library_reception,1,1,1,0
+access_product_manager,product manager,product.model_product_product,library_management.group_library_manager,1,1,1,1
+access_product_admin,product admin,product.model_product_product,library_management.group_library_admin,1,1,1,1

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Root menu — all library users -->
+    <menuitem id="menu_library_root"
+              name="Library"
+              sequence="10"
+              groups="library_management.group_library_customer"/>
+
+    <!-- ══ Books — Customer + above ══ -->
+    <menuitem id="menu_library_books_root"
+              name="Books"
+              parent="menu_library_root"
+              sequence="5"
+              groups="library_management.group_library_customer"/>
+
+    <!-- Customer: Available books (kanban) -->
+    <menuitem id="menu_library_available_books"
+              name="Available Books"
+              parent="menu_library_books_root"
+              action="action_library_available_books"
+              sequence="10"
+              groups="library_management.group_library_customer"/>
+
+    <!-- ഈ ഒരു menu മാത്രം customer_only -->
+    <menuitem id="menu_my_borrows"
+              name="My Borrow Records"
+              parent="menu_library_books_root"
+              action="action_my_borrow_records"
+              sequence="20"
+              groups="library_management.group_library_customer_only"/>
+
+
+    <!-- Customer: New Borrow -->
+    <menuitem id="menu_customer_new_borrow"
+              name="New Borrow"
+              parent="menu_library_books_root"
+              action="action_library_book_issues"
+              sequence="25"
+              groups="library_management.group_library_customer"/>          
+
+    <!-- Reception: Books Master (list+form with all details) -->
+    <menuitem id="menu_library_all_books"
+              name="Books Master"
+              parent="menu_library_books_root"
+              action="action_library_all_books"
+              sequence="30"
+              groups="library_management.group_library_reception"/>
+
+    <!-- ══ Borrowing — Reception + above ══ -->
+    <menuitem id="menu_library_borrowing"
+              name="Borrowing"
+              parent="menu_library_root"
+              sequence="10"
+              groups="library_management.group_library_reception"/>
+
+    <menuitem id="menu_library_issues"
+              name="Book Issues"
+              parent="menu_library_borrowing"
+              action="action_library_book_issues"
+              sequence="10"
+              groups="library_management.group_library_reception"/>
+
+    <menuitem id="menu_library_issued"
+              name="Currently Issued"
+              parent="menu_library_borrowing"
+              action="action_library_issued_books"
+              sequence="20"
+              groups="library_management.group_library_reception"/>
+
+    <menuitem id="menu_library_overdue"
+              name="Overdue Books"
+              parent="menu_library_borrowing"
+              action="action_library_overdue_books"
+              sequence="30"
+              groups="library_management.group_library_reception"/>
+
+    <!-- ══ Purchase — Reception + above ══ -->
+    <menuitem id="menu_library_purchase"
+              name="Purchase"
+              parent="menu_library_root"
+              sequence="20"
+              groups="library_management.group_library_reception"/>
+
+    <menuitem id="menu_library_rfq"
+              name="Requests for Quotation"
+              parent="menu_library_purchase"
+              action="action_library_rfq"
+              sequence="10"
+              groups="library_management.group_library_reception"/>
+
+    <menuitem id="menu_library_purchase_orders"
+              name="Purchase Orders"
+              parent="menu_library_purchase"
+              action="action_library_purchase_orders"
+              sequence="20"
+              groups="library_management.group_library_reception"/>
+
+    <!-- ══ Sales — Reception + above ══ -->
+    <menuitem id="menu_library_sales"
+              name="Sales"
+              parent="menu_library_root"
+              sequence="30"
+              groups="library_management.group_library_reception"/>
+
+    <menuitem id="menu_library_sale_orders"
+              name="Sales Orders"
+              parent="menu_library_sales"
+              action="action_library_sale_orders"
+              sequence="10"
+              groups="library_management.group_library_reception"/>
+
+    <menuitem id="menu_library_invoices"
+              name="Invoices"
+              parent="menu_library_sales"
+              action="action_library_invoices"
+              sequence="20"
+              groups="library_management.group_library_reception"/>
+
+</odoo>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <!--
+    PRD Section 6: Purchase Process for New Books
+    Flow: Create RFQ → Send to vendor → Confirm PO → Receive into Library Shelf
+    This uses the standard purchase module; we just add a filtered action
+    and a product category tip so books go to the right location.
+  -->
+
+  <!-- Action: Purchase orders filtered to book product category -->
+  <record id="action_library_purchase_orders" model="ir.actions.act_window">
+    <field name="name">Book Purchases</field>
+    <field name="res_model">purchase.order</field>
+    <field name="view_mode">list,form</field>
+    <field name="context">{}</field>
+    <field name="help" type="html">
+      <p class="o_view_nocontent_smiling_face">
+        Create a Request for Quotation to purchase new books.
+      </p>
+      <p>
+        After confirming the Purchase Order, receive the books directly
+        into the <strong>Library Shelf</strong> stock location.
+      </p>
+    </field>
+  </record>
+
+  <!-- Action: RFQs (draft/sent purchase orders) -->
+  <record id="action_library_rfq" model="ir.actions.act_window">
+    <field name="name">Book RFQs</field>
+    <field name="res_model">purchase.order</field>
+    <field name="view_mode">list,form</field>
+    <field name="domain">[('state','in',('draft','sent'))]</field>
+    <field name="context">{}</field>
+  </record>
+
+</odoo>
